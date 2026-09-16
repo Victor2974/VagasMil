@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>1000Vagas</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <aside>
+        <h1 id="h1price">VagasMil</h1>
+
+        <nav>
+            <button onclick="mostrarTela('dashboard')"">
+                Dashboard
+            </button>
+
+            <button onclick="mostrarTela('vagas')"">
+                Vagas
+            </button>
+
+           
+        </nav>
+    </aside>
+
+
+    <main>
+
+        <!-- Dashoboard -->
+
+        <section id="dashboard" class="pagina">
+
+            <h2>Dashboard</h2>
+
+            <p>Bem-vindo ao Price Tracker!</p>
+
+            <h2 id="nome-produto"></h2>
+            <p id="preco-produto"></p>
+
+        </section>
+
+
+        <!-- Vagas -->
+
+        <section id="vagas" class="pagina">
+
+            <h2>Vagas</h2>
+
+            <!-- BOTAO ADICIONAR -->
+            <button onclick="botaoAdicionar()">
+                Adicionar
+            </button>
+
+            <!-- FORMULARIO -->
+           <form id="vagasForm">
+
+            <!-- CARGO -->
+            <label for="fcargo">Cargo:</label><br>
+            <input type="text" id="fcargo" name="txtCargo"><br>
+
+            <!-- EMPRESA -->
+            <label for="fempresa">Empresa:</label><br>
+            <input type="text" id="fempresa" name="txtEmpresa"><br>
+
+            <!-- LINK -->
+            <label for="flink">Link:</label><br>
+            <input type="url" id="flink" name="urlLink"><br>
+
+            <!-- SALARIO -->
+            <label for="fsalario">Salario:</label><br>
+            <input type="number" id="fsalario" name="salario" step="0.01"><br>
+
+            <!-- DATA CANDIDATURA -->
+            <label for="fdataCandidatura">Data:</label><br>
+            <input type="date" id="fdataCandidatura" name="dataCandidatura"><br>
+
+            <!-- STATUS -->
+            <label for="fstatus">Status:</label><br>
+            <select name="status" id="fstatus">
+
+                <option value="">
+                    Selecione o Status
+                </option>
+
+                 <option value="Candidatado">
+                    Candidatado
+                </option>
+
+                 <option value="Triagem">
+                    Triagem
+                </option>
+
+                 <option value="Entrevista RH">
+                    Entrevista RH
+                </option>
+
+                 <option value="Entrevista Técnica">
+                    Entrevista Técnica
+                </option>
+
+                 <option value="Teste Técnico">
+                    Teste Técnico
+                </option>
+
+                 <option value="Proposta">
+                    Proposta
+                </option>
+
+                 <option value="Contratado">
+                    Contratado
+                </option>
+
+            </select><br><br>
+
+            <!-- ENVIAR E RESETAR -->
+            <input type="submit" onclick="adicionarVaga(event)">
+            <input type="reset">
+
+            <br><br>
+           </form>
+
+           <!-- CARDS DAS VAGAS -->
+
+           <div id="listaVagas"></div><br><br>
+           
+            <button onclick="alert('Serio?')">Não clica por favor</button>
+            
+            
+
+        </section>
+
+
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
