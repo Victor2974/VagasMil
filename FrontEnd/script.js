@@ -45,11 +45,11 @@ function adicionarVaga(event){
     // CRIA O CARD DENTRO DO HTML
     card.innerHTML = `
     <div class="botaoEditar">
-        <a href="#" onClick"editarVaga()">
+        <a href="#" onclick="editarVaga(event)">
             editar
         </a>
         <span> |</span>
-        <a href="#"onClick"apagarVaga()">
+        <a href="#"onclick="apagarVaga(event)">
             apagar
         </a>
     </div>
@@ -74,5 +74,16 @@ function adicionarVaga(event){
 
     // FECHA O FORMULARIO QUANDO ENVIADO
     botaoAdicionar();
+}
 
+function apagarVaga(event){
+    event.preventDefault();
+    
+    const elementoClicado = event.target;
+
+    const cardElemento = elementoClicado.closest('.card');
+
+    if (cardElemento){
+        cardElemento.remove();
+    }
 }

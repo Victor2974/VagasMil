@@ -1,33 +1,276 @@
-html{
-    background-color: black;
-    color: white;
+/* ==========================================================================
+   1. CONFIGURAÇÕES GERAIS E RESET
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
-a{
-    text-decoration: none;
+body {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f4f6f9;
+    color: #333;
 }
 
-.pagina, 
-#vagasForm{
-    display:none;
+
+
+/* ==========================================================================
+   2. MENU LATERAL (ASIDE)
+   ========================================================================== */
+aside {
+    width: 250px;
+    background-color: #1e293b;
+    color: #fff;
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#dashboard{
+aside h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #38bdf8;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+aside nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+aside nav button {
+    background: transparent;
+    color: #cbd5e1;
+    border: none;
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+aside nav button:hover {
+    background-color: #334155;
+    color: #fff;
+}
+
+/* ==========================================================================
+   3. ÁREA PRINCIPAL (MAIN)
+   ========================================================================== */
+main {
+    flex: 1;
+    padding: 32px;
+    overflow-y: auto;
+}
+
+.pagina {
+    background: #ffffff;
+    padding: 28px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    display: none;
+}
+
+#dashboard {
     display: block;
 }
 
-.card{
-    position: relative;
+h2 {
+    font-size: 1.5rem;
+    color: #0f172a;
+    margin-bottom: 20px;
 }
 
-.botaoEditar{
-    display: none;
+/* ==========================================================================
+   4. FORMULÁRIO DE VAGAS
+   ========================================================================== */
+#vagasForm {
+    background-color: #f8fafc;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    margin-top: 16px;
+    margin-bottom: 24px;
+    max-width: 600px;
+}
+
+#vagasForm label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #475569;
+    display: block;
+    margin-bottom: 4px;
+}
+
+#vagasForm input[type="text"],
+#vagasForm input[type="url"],
+#vagasForm input[type="number"],
+#vagasForm input[type="date"],
+#vagasForm select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+#vagasForm input:focus,
+#vagasForm select:focus {
+    border-color: #0284c7;
+}
+
+/* ==========================================================================
+   5. BOTÕES DO SISTEMA
+   ========================================================================== */
+button,
+input[type="submit"],
+input[type="reset"] {
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding: 10px 18px;
+    border: none;
+    transition: background 0.2s, transform 0.1s;
+}
+
+button:active,
+input[type="submit"]:active,
+input[type="reset"]:active {
+    transform: scale(0.98);
+}
+
+/* Botão principal (Adicionar) */
+main > section > button,
+input[type="submit"] {
+    background-color: #0284c7;
+    color: #fff;
+}
+
+main > section > button:hover,
+input[type="submit"]:hover {
+    background-color: #0369a1;
+}
+
+/* Botão Reset */
+input[type="reset"] {
+    background-color: #e2e8f0;
+    color: #475569;
+}
+
+input[type="reset"]:hover {
+    background-color: #cbd5e1;
+}
+
+/* ==========================================================================
+   6. GRID DE CARDS (LISTA DE VAGAS)
+   ========================================================================== */
+/* Mantive o nome com os dois 'n' conforme está no seu HTML: card-containner */
+.card-containner {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+}
+
+/* Estilo para os cards gerados via JavaScript */
+.card {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.card h3 {
+    font-size: 1rem;
+    color: #0f172a;
+}
+
+.card p {
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+.card a {
+    color: #0284c7;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.card a:hover {
+    text-decoration: underline;
+}
+
+/* Badge de Status */
+.card .status {
+    align-self: flex-start;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background-color: #e0f2fe;
+    color: #0369a1;
+}
+
+/* Posiciona os botões no topo do card e esconde por padrão */
+.card {
+    position: relative; /* Necessário para posicionar os botões internamente */
+}
+
+.card .botaoEditar {
     position: absolute;
     top: 10px;
     right: 10px;
+    background-color: #ffffff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    gap: 6px;
+    font-size: 0.75rem;
 
+    /* Esconde com opacidade e display */
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: opacity 0.2s ease-in-out;
 }
 
+/* Quando passa o mouse no CARD, MOSTRA a div de botões */
 .card:hover .botaoEditar {
-    display: block;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Estilização dos links */
+.card .botaoEditar a {
+    color: #475569 !important;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.card .botaoEditar a:hover {
+    color: #0284c7 !important;
 }
